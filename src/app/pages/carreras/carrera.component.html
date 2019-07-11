@@ -1,0 +1,34 @@
+<div class="row animated fadeIn">
+    <div class="col-md-6">
+
+        <div class="card card-body">
+            <h3 class="box-title m-b-0">Carrera {{carrera.carrera}}</h3>
+
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+
+                    <form #f="ngForm" ngNativeValidate (ngSubmit)="guardarCarrera(f)">
+
+                        <div class="form-group">
+                            <label>Nombre Carrera</label>
+                            <input [(ngModel)]="carrera.carrera" name="carrera" type="text" class="form-control" placeholder="Nombre de la Carrera" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">
+                          <i class="fa fa-save"></i>
+                          Guardar
+                        </button>
+
+                        <a routerLink="/carreras" class="btn btn-inverse waves-effect waves-light">
+                          Cancel
+                        </a>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

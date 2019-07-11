@@ -1,0 +1,75 @@
+<!-- cargango o buscando -->
+<div class="row animated fadeIn" *ngIf="cargando">
+    <div class="col-sm-12">
+        <div class="alert alert-warning text-center">
+            <strong>Cargando</strong>
+            <br>
+            <i class="fa fa-refresh fa-spin fa-2x"></i>
+            <br>
+            <span>Espere por favor</span>
+        </div>
+    </div>
+</div>
+
+
+<div class="row" *ngIf="!cargando">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <!-- crear -->
+                <div class="text-right">
+                    <button [routerLink]="['/proceso','nuevo']" type="button" class="btn waves-effect waves-light btn-rounded btn-primary">
+                      <i class="fa fa-plus"></i>
+                      Crear Proceso
+                    </button>
+                </div>
+
+                <!-- cantidad de procesos -->
+                <h3 class="card-title"> Procesos Registrados (<small> {{totalRegistros}} </small>) </h3>
+
+                <!-- Tabla -->
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th> Proceso </th>
+                            <th> Operaciones </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let proceso of procesos">
+                            <td>{{proceso.proceso}}</td>
+                            <td>{{proceso.estadoPro}}</td>
+
+                            <td>
+                                <button [routerLink]="['/proceso',proceso._id]" class="btn btn-primary">
+                                    <i class="fa fa-edit"></i>
+                                </button>
+
+                                <!--i class="fa fa-trash-o"></i-->
+                                <a class="switch" (click)="desactivarProceso(proceso)">
+                                    <label> 
+                                        <input type="checkbox" checked>
+                                        <span class="lever switch-col-indigo"></span>
+                                    </label>
+                                </a>
+
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- paginacion -->
+                <button (click)="cambiarDesde(-10)" class="btn btn-secondary">
+                    Anterior
+                </button>
+                <button (click)="cambiarDesde(10)" class="btn btn-secondary">
+                    Siguiente
+                </button>
+
+            </div>
+        </div>
+
+    </div>
+</div>
